@@ -11,7 +11,7 @@ Requirements:
 * python 2.7 +
 * turtle
 
-To run the animation type the following code in the terminal:
+To run the animation type the following code in the terminal: </br>
 `python animation.py`
 
  
