@@ -5,6 +5,29 @@ import turtle
 global gate_sel
 import time
 
+def bye():
+	turtle.TurtleScreen._RUNNING = True
+
+	trtl = turtle.Turtle()    #making a turtle object of Turtle class for drawing
+	screen=turtle.Screen()    #making a canvas for drawing
+	screen.setup(520,420)    #choosing the screen size
+	screen.bgcolor('white')    #making canvas black
+	trtl.pencolor('black')    #making colour of the pen red
+
+	trtl.pensize(4)    #choosing the size of pen nib
+	trtl.speed(1)    #choosing the speed of drawing
+	trtl.shape('turtle')   #choosing the shape of pen nib
+	trtl.hideturtle()
+
+	trtl.penup()
+	trtl.goto(-180,110)
+	trtl.pendown()
+	trtl.write("THANK YOU! GOODBYE!", font=("Arial", 24, "bold"))
+	time.sleep(3)
+	screen.clear()
+	screen.bye()
+
+
 def make_truth_table(w1,w2,th):
      
     t = pd.DataFrame(index = None)
@@ -66,6 +89,8 @@ def set_val(v):
 def draw_network(w1,w2,th,x1,x2,gate,close=False):
 
     output = get_output(w1,w2,x1,x2,th)
+
+    turtle.TurtleScreen._RUNNING = True
 
     trtl = turtle.Turtle()    #making a turtle object of Turtle class for drawing
     screen=turtle.Screen()    #making a canvas for drawing
@@ -150,8 +175,10 @@ def draw_network(w1,w2,th,x1,x2,gate,close=False):
 
     if(close):
         screen.bye()
+        #screen.exitonclick()
 
-        
+
+
 onceMore = True
 while(onceMore==True):
     #clear_output()
@@ -216,7 +243,7 @@ while(onceMore==True):
     elif selection == 4:
         gate_sel=4
         get_weights()
-        weights=[int(x) for x in weights]
+        weights=[float(x) for x in weights]
         #print("CUSTOM Gate")
         draw_network(weights[0],weights[1],weights[2],0,0,'CUSTOM')
         draw_network(weights[0],weights[1],weights[2],0,1,'CUSTOM')
@@ -244,4 +271,5 @@ while(onceMore==True):
     else:
         print("\nHope you liked this :)")
         onceMore=False
+        bye()
     
